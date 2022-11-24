@@ -1,0 +1,17 @@
+{% extends 'guess/base.html' %}
+
+{% block content %}
+
+    {% if message %}
+    <p>{{ message }}</p>
+    {% endif %}
+
+    <form method="post">
+        <p><label for="guess">Input your guess:</label>
+        {% csrf_token %}
+        <input type="text" name="guess" size="40" id="guess"/>
+        </p>
+        <input type="submit"/>
+    </form>
+
+{% endblock %}

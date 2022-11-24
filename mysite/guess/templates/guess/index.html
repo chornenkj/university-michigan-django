@@ -1,0 +1,9 @@
+{% extends 'guess/base.html' %}
+
+{% block content %}
+
+    <p>Just guess given number...</p>
+    <br/>
+    <p><a href="{% url 'guess:next_try' %}">&gt;&gt;&gt;Start game...</a></p>
+
+{% endblock %}
