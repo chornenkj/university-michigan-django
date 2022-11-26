@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect, reverse
 from django.views import View
 from django.utils.html import escape
 
+from mysite import settings
+
 from .models import Game
 
 import random
@@ -47,21 +49,30 @@ class TryView(View):
 
         # session data just for debugging
         current_session = {}
-        for key, value in request.session.items():
-            current_session[escape(key)] = escape(value)
+        if settings.DEBUG:
+            for key, value in request.session.items():
+                current_session[escape(key)] = escape(value)
 
         # COOKIES values just for debugging
         current_cookies = {}
-        for key, value in request.COOKIES.items():
-            current_cookies[escape(key)] = escape(value)
+        if settings.DEBUG:
+            for key, value in request.COOKIES.items():
+                current_cookies[escape(key)] = escape(value)
+
+        # context to pass into render response:
+                context = {
+            # True if previous game ended and offer to start new one
+            'sn' : start_new,
+            # message from redirected POST submit
+            'message' : msg,
+            # current session data
+            'cs' : current_session,
+            # current COOKIES data
+            'cc' : current_cookies
+        }
 
         # render a response using a template
-        # data:
-        # sn - True if previous game ended and offer to start new one
-        # message - message from redirected POST submit
-        # cs - current session data
-        # cc - current COOKIES data
-        return render(request, 'guess/next_try.html', {'sn' : start_new, 'message' : msg, 'cs' : current_session, 'cc' : current_cookies})
+        return render(request, 'guess/next_try.html', context)
 
     # view function for POST method
     # POST method is used if user submits guess number

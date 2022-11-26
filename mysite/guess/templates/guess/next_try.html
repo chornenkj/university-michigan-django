@@ -13,21 +13,26 @@
     <form method="post">
         <p><label for="guess">Input your guess:</label>
         {% csrf_token %}
-        <input type="text" name="guess" size="40" id="guess"/>
+        <input type="text" name="guess" size="20" id="guess"/>
         </p>
         <input type="submit"/>
     </form>
     {% endif %}
 
+    {% if cs %}
     <br>
     <p>Session:</p>
     {% for key, value in cs.items %}
     <p>{{ key }} : {{ value }}</p>
     {% endfor %}
+    {% endif %}
 
+    {% if cc %}
     <br>
     <p>Cookies:</p>
     {% for key, value in cc.items %}
     <p>{{ key }} : {{ value }}</p>
     {% endfor %}
+    {% endif %}
+
 {% endblock %}
