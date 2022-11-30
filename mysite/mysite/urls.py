@@ -32,6 +32,13 @@ urlpatterns = [
     # Guess Game by Chornenkj
     path('guess/', include('guess.urls')),
 
+    # Autos CRUD app to pass course DJ4E module
+    # on creating, retreaving, updating and deleting forms
+    path('autos/', include('autos.urls')),
+
+    # URLs for login and logout
+    path('accounts/', include('django.contrib.auth.urls')),
+
     # these three apps are created just to pass course DJ4E
     path('polls/', include('polls.urls')),
     path('', TemplateView.as_view(template_name='home/main.html'), name='home'),
