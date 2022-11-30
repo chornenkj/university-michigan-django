@@ -1,6 +1,8 @@
-<head>
-    <meta name="dj4e" content="dfb5185fcebd36be73800d8c7549b49f">
-</head>
+{% extends 'base_bootstrap.html' %}
+
+{% block content %}
+    <h1>Chornenkj`s Django Projects</h1>
+
 <ul>
     <li><p><a href="{% url 'guess:index' %}">Guess Game by Chornenkj</a></p></li>
     <li><p><a href="{% url 'autos:all' %}">Autos CRUD</a></p>
@@ -8,4 +10,4 @@
     <li><p><a href="{% url 'hello' %}">Test the session</a></p></li>
 </ul>
 
-<p>dfb5185f</p>
+{% endblock %}

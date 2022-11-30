@@ -1,11 +1,16 @@
-<p> This is an assigment dfb5185f</p>
+{% extends 'base_bootstrap.html' %}
 
-{% if latest_question_list %}
-    <ul>
-    {% for question in latest_question_list %}
-        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No polls are available.</p>
-{% endif %}
+{% block content %}
+    <h1>Questions</h1>
+
+    {% if latest_question_list %}
+        <ul>
+        {% for question in latest_question_list %}
+            <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No polls are available.</p>
+    {% endif %}
+
+{% endblock %}
