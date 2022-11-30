@@ -29,6 +29,9 @@ urlpatterns = [
     # admin app
     path('admin/', admin.site.urls),
 
+    # apps home page
+    path('', TemplateView.as_view(template_name='home/main.html'), name='home'),
+
     # Guess Game by Chornenkj
     path('guess/', include('guess.urls')),
 
@@ -39,9 +42,8 @@ urlpatterns = [
     # URLs for login and logout
     path('accounts/', include('django.contrib.auth.urls')),
 
-    # these three apps are created just to pass course DJ4E
+    # these two apps are created just to pass course DJ4E
     path('polls/', include('polls.urls')),
-    path('', TemplateView.as_view(template_name='home/main.html'), name='home'),
     path('hello/', hv.myview, name='hello'),
 
     # this is just to browse files in the course DJ4E

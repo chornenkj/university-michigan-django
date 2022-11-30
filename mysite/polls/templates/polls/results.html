@@ -10,6 +10,8 @@
     {% endfor %}
     </ul>
 
-    <a href="{% url 'polls:detail' question.id %}">Vote again?</a>
+    <p><a href="{% url 'polls:detail' question.id %}">Vote again?</a></p>
+    <p><a href="{% url 'polls:index' %}">Return to Polls</a></p>
+    <p><a href="{% url 'home' %}">Return to Apps</a></p>
 
 {% endblock %}
