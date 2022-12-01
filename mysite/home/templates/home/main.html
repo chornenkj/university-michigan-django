@@ -1,21 +1,25 @@
 {% extends 'base_bootstrap.html' %}
 
+{% block title %}
+Chornenkj`s Django Projects
+{% endblock %}
+
 {% block content %}
     <h1>Chornenkj`s Django Projects</h1>
 
 <ul>
     <li><p style="font-size: large"><a href="{% url 'guess:index' %}">Guess Game by Chornenkj</a></p>
-    <p style="font-size: small">My game to guess a number.
+    <p style="font-size: medium">My game to guess a number.
     Your game is saved to session, so you can continue anytime you like.</p></li>
     <li><p style="font-size: large"><a href="{% url 'autos:all' %}">Autos CRUD</a></p>
-    <p style="font-size: small">Autos app let you create Makes, and create Autos on their base.
+    <p style="font-size: medium">Autos app let you create Makes, and create Autos on their base.
     You can create, retrieve, update and delete data (Makes and Autos) with this app.
     This app requires login. Use username 'freeuser' and password '1256qwty' to get access.</p></li>
     <li><p style="font-size: large"><a href="{% url 'polls:index' %}">A Polls Application</a></p></li>
-    <p style="font-size: small">This app is to vote to the Questions.
+    <p style="font-size: medium">This app is to vote to the Questions.
     Questions are set in admin. So you cannot add your ones.</p>
     <li><p style="font-size: large"><a href="{% url 'hello' %}">Test the session</a></p></li>
-    <p style="font-size: small">This app just uses session to keep amount of page loads.
+    <p style="font-size: medium">This app just uses session to keep amount of page loads.
     If it is greater than 4, it refreshes.</p>
 </ul>
 
