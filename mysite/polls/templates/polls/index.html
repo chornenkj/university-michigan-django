@@ -1,5 +1,9 @@
 {% extends 'base_bootstrap.html' %}
 
+{% block title %}
+Polls by Chornenkj
+{% endblock %}
+
 {% block content %}
     <h1>Questions</h1>
 
@@ -13,4 +17,5 @@
         <p>No polls are available.</p>
     {% endif %}
 
+    <p><a href="{% url 'home' %}">Return to Apps</a></p>
 {% endblock %}

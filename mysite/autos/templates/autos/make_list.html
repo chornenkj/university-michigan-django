@@ -1,5 +1,9 @@
 {% extends "base_bootstrap.html" %}
 
+{% block title %}
+Autos app by Chornenkj
+{% endblock %}
+
 {% block content %}
   <h1>Make List</h1>
   {% if make_list %}
@@ -19,4 +23,5 @@
   <p>
     <a href="{% url 'autos:all' %}">Back to autos</a>
   </p>
+
 {% endblock %}

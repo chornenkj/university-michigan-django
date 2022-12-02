@@ -28,6 +28,11 @@ DEBUG = True
 ALLOWED_HOSTS = [ '*' ]
 
 
+# Project name
+
+PROJECT_NAME = 'Chornenkj`s Django Projects'
+
+
 # Application definition
 
 INSTALLED_APPS = [

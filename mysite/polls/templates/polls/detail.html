@@ -1,5 +1,9 @@
 {% extends 'base_bootstrap.html' %}
 
+{% block title %}
+Polls by Chornenkj
+{% endblock %}
+
 {% block content %}
 
     <form action="{% url 'polls:vote' question.id %}" method="post">
@@ -15,4 +19,5 @@
     <input type="submit" value="Vote">
     </form>
 
+    <p><a href="{% url 'home' %}">Return to Apps</a></p>
 {% endblock %}

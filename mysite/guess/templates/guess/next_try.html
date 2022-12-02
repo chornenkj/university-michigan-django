@@ -1,5 +1,9 @@
 {% extends 'base_bootstrap.html' %}
 
+{% block title %}
+Guess Game by Chornenkj
+{% endblock %}
+
 {% block content %}
     <h1>Guessing Game</h1>
 
@@ -8,7 +12,7 @@
     {% endif %}
 
     {% if sn %}
-    <p><a href= {% url 'guess:next_try' %}>&gt;&gt;&gt;Start new game...</a></p>
+    <p style="font-size: large"><a href= {% url 'guess:next_try' %}>&gt;&gt;&gt;Start new game...</a></p>
 
     {% else %}
     <form method="post">
@@ -36,4 +40,5 @@
     {% endfor %}
     {% endif %}
 
+    <p><a href="{% url 'home' %}">Return to Apps</a></p>
 {% endblock %}
