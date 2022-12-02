@@ -12,7 +12,7 @@ Guess Game by Chornenkj
     {% endif %}
 
     {% if sn %}
-    <p><a href= {% url 'guess:next_try' %}>&gt;&gt;&gt;Start new game...</a></p>
+    <p style="font-size: large"><a href= {% url 'guess:next_try' %}>&gt;&gt;&gt;Start new game...</a></p>
 
     {% else %}
     <form method="post">
@@ -40,4 +40,5 @@ Guess Game by Chornenkj
     {% endfor %}
     {% endif %}
 
+    <p><a href="{% url 'home' %}">Return to Apps</a></p>
 {% endblock %}
