@@ -59,8 +59,21 @@ class TryView(View):
             for key, value in request.COOKIES.items():
                 current_cookies[escape(key)] = escape(value)
 
+        # If user checked to show game history we load to context
+        game_history = []
+        if (request.GET.get('flag', False) == 'on') or (request.session.get('flag',False) == 'on'):
+            request.session['flag'] = 'on'
+            guesses = game.guess_set.all()
+            if guesses:
+                for guesse in guesses:
+                    game_history.append(guesse)
+        else:
+            request.session['flag'] = 'off'
+
+
+
         # context to pass into render response:
-                context = {
+        context = {
             # True if previous game ended and offer to start new one
             'sn' : start_new,
             # message from redirected POST submit
@@ -68,7 +81,9 @@ class TryView(View):
             # current session data
             'cs' : current_session,
             # current COOKIES data
-            'cc' : current_cookies
+            'cc' : current_cookies,
+            # if exist game history
+            'gh' : game_history
         }
 
         # render a response using a template

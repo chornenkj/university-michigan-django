@@ -20,18 +20,24 @@ class Game(models.Model):
         msg = False
         if guess:
             try:
-                # create a guess object for current guess
-                self.guess_set.create(guess=guess)
                 # in case the guess is correct
                 if int(guess) < self.guess_try:
                     msg = 'Guess {} is too low'.format(str(guess))
                 elif int(guess) > self.guess_try:
                     msg = 'Guess {} is too high'.format(str(guess))
                 else:
-                    msg = 'Congrats! {} is correct guess!\nYou used {} attempts!'#.format(str(guess),str(self.guess_set.count()))
+                    msg = 'Congrats! {} is correct guess!\nYou used {} attempts!'.format(
+                        str(guess),
+                        str(self.guess_set.count())
+                    )
+
                     # set ongoing attribute to False (game ended) and save to database
                     self.ongoing = False
                     self.save()
+
+                # create a guess object for current guess
+                self.guess_set.create(guess=guess, message=msg)
+
             # in case the guess is not correct
             except:
                 msg = 'Bad guess format!'
@@ -46,9 +52,15 @@ class Guess(models.Model):
     guess = models.IntegerField()
     # date a guess was submitted
     date = models.DateTimeField(auto_now=True)
+    # message displayed for your guess
+    message = models.CharField(max_length=30, default='')
 
     # string representation for a single guess
     def __str__(self):
-        return '{} - guess {} ({}) for game {}'#.format(str(self.guess),str(self.id),str(self.date),str(self.game.id))
+        return '{} - guess on {} - {}'.format(
+            str(self.guess),
+            str(self.date.strftime('%Y-%m-%d %H:%M')),
+            self.message
+        )
 
 

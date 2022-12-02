@@ -9,8 +9,13 @@ Guess Game by Chornenkj
 
     <p>Just guess given number...</p>
     <p>between 0 and 500</p>
-    <br/>
-    <p style="font-size: large"><a href="{% url 'guess:next_try' %}">&gt;&gt;&gt;Start game...</a></p>
+
+    <p>
+    <form action="{% url 'guess:next_try' %}">
+    <input type="checkbox" name="flag">Show game history<br/>
+    <input type="submit" value="&gt;&gt;&gt;Start game">
+    </form>
+    </p>
 
     <p><a href="{% url 'home' %}">Return to Apps</a></p>
 {% endblock %}

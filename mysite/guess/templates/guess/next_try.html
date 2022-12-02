@@ -11,10 +11,7 @@ Guess Game by Chornenkj
     <p>{{ message }}</p>
     {% endif %}
 
-    {% if sn %}
-    <p style="font-size: large"><a href= {% url 'guess:next_try' %}>&gt;&gt;&gt;Start new game...</a></p>
-
-    {% else %}
+    {% if not sn %}
     <form method="post">
         <p><label for="guess">Input your guess:</label>
         {% csrf_token %}
@@ -22,6 +19,24 @@ Guess Game by Chornenkj
         </p>
         <input type="submit"/>
     </form>
+    {% endif %}
+
+    <br>
+    <p><a href="{% url 'guess:index' %}">Return to App Home Page</a></p>
+
+    <p><a href="{% url 'home' %}">Return to Apps</a></p>
+
+    {% if gh %}
+        <ul>
+        {% for item in gh %}
+        <li>{{ item }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if cs or cc %}
+    <br><p>Sessions and cookies are displayed while debugging (global DEBUG is set to True).
+    To hide the rows below just set DEBUG to False.</p>
     {% endif %}
 
     {% if cs %}
@@ -40,5 +55,4 @@ Guess Game by Chornenkj
     {% endfor %}
     {% endif %}
 
-    <p><a href="{% url 'home' %}">Return to Apps</a></p>
 {% endblock %}
