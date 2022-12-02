@@ -63,7 +63,7 @@ class TryView(View):
         game_history = []
         if (request.GET.get('flag', False) == 'on') or (request.session.get('flag',False) == 'on'):
             request.session['flag'] = 'on'
-            guesses = game.guess_set.all()
+            guesses = game.guess_set.all().order_by('-date')
             if guesses:
                 for guesse in guesses:
                     game_history.append(guesse)
