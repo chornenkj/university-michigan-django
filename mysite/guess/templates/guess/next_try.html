@@ -36,23 +36,28 @@ Guess Game by Chornenkj
 
     {% if cs or cc %}
     <br><p>Sessions and cookies are displayed while debugging (global DEBUG is set to True).
-    To hide the rows below just set DEBUG to False.</p>
+    To hide the details below just set DEBUG to False.</p>
+    <p>Click on Session or Cookies labels to show details.</p>
     {% endif %}
 
     {% if cs %}
     <br>
-    <p>Session:</p>
+    <details>
+    <summary>Session:</summary>
     {% for key, value in cs.items %}
     <p>{{ key }} : {{ value }}</p>
     {% endfor %}
+    </details>
     {% endif %}
 
     {% if cc %}
     <br>
-    <p>Cookies:</p>
+    <details>
+    <summary>Cookies:</summary>
     {% for key, value in cc.items %}
     <p>{{ key }} : {{ value }}</p>
     {% endfor %}
+    </details>
     {% endif %}
 
 {% endblock %}
