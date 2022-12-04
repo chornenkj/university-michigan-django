@@ -7,24 +7,27 @@ Chornenkj`s Django Projects
 {% block content %}
     <h1>Chornenkj`s Django Projects</h1>
 
-    <p style="font-size: medium">You can view Django codes for this site at
+    <p style="font-size: medium">You can view Django codes of this site at
         <a href="https://github.com/chornenkj/university-michigan-django.git">
-            Github repository project link</a></p>
+            Github repository project link</a></p><br/>
 
 <ul>
     <li><p style="font-size: large"><a href="{% url 'guess:index' %}">Guess Game by Chornenkj</a></p>
     <p style="font-size: medium">My game to guess a number.
-    Your game is saved to session, so you can continue anytime you like.</p></li>
+    Your game is saved to session, so you can continue anytime you like.</p><br></li>
+
     <li><p style="font-size: large"><a href="{% url 'autos:all' %}">Autos CRUD</a></p>
     <p style="font-size: medium">Autos app let you create Makes, and create Autos on their base.
     You can create, retrieve, update and delete data (Makes and Autos) with this app.
-    This app requires login. Use username 'freeuser' and password '1256qwty' to get access.</p></li>
-    <li><p style="font-size: large"><a href="{% url 'polls:index' %}">A Polls Application</a></p></li>
+    This app requires login. Use username 'freeuser' and password '1256qwty' to get access.</p><br></li>
+
+    <li><p style="font-size: large"><a href="{% url 'polls:index' %}">A Polls Application</a></p>
     <p style="font-size: medium">This app is to vote to the Questions.
-    Questions are set in admin. So you cannot add your ones.</p>
-    <li><p style="font-size: large"><a href="{% url 'hello' %}">Test the session</a></p></li>
+    Questions are set in admin. So you cannot add your ones.</p><br></li>
+
+    <li><p style="font-size: large"><a href="{% url 'hello' %}">Test the session</a></p>
     <p style="font-size: medium">This app just uses session to keep amount of page loads.
-    If it is greater than 4, it refreshes.</p>
+    If it is greater than 4, it refreshes.</p><br></li>
 </ul>
 
 {% endblock %}
