@@ -1,0 +1,19 @@
+{% extends "base_bootstrap.html" %}
+
+{% block content %}
+<h1>List of Breeds</h1>
+
+<ul>
+    {% for item in object_list %}
+        <li>{{ item }} (<a href="{% url 'cats:breed_update' item.id %}">Update</a> | <a
+            href="{% url 'cats:breed_delete' item.id %}">Delete</a>)</li>
+    {% empty %}
+        <p>There is no breeds yet.</p>
+    {% endfor %}
+</ul>
+
+<p><a href="{% url 'cats:breed_create' %}">Add a Breed</a></p>
+
+<p><a href="{% url 'cats:all' %}">Back to Cats</a></p>
+
+{% endblock %}

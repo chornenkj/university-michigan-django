@@ -39,6 +39,10 @@ urlpatterns = [
     # on creating, retreaving, updating and deleting forms
     path('autos/', include('autos.urls')),
 
+    # Cats app to pass course DJ4E module
+    # on creating a database
+    path('cats/', include('cats.urls')),
+
     # URLs for login and logout
     path('accounts/', include('django.contrib.auth.urls')),
 
