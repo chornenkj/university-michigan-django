@@ -1,9 +1,12 @@
-from django.urls import reverse_lazy
+from django.urls import reverse, reverse_lazy
+from django.http import HttpResponseRedirect
+
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from .models import Cat, Breed
+from scripts import cats
 
 # Create your views here.
 
@@ -48,6 +51,9 @@ class BreedDeleteView(LoginRequiredMixin, DeleteView):
     fields = '__all__'
     success_url = reverse_lazy('cats:all')
 
+def cats_refresh(request):
+    cats.refresh()
+    return HttpResponseRedirect(reverse('cats:all'))
 
 
 
