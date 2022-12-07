@@ -10,8 +10,10 @@ Autos app by Chornenkj
 
 <p>Are you sure you want to delete the auto: {{ auto }}?</p>
 
+{% load crispy_forms_tags %}
 <form action="" method="POST">
   {% csrf_token %}
+  {{ form|crispy }}
   <input type="submit" value="Yes, delete.">
 </form>
 

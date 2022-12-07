@@ -12,9 +12,11 @@ Guess Game by Chornenkj
     {% endif %}
 
     {% if not sn %}
+    {% load crispy_forms_tags %}
     <form method="post">
         <p><label for="guess">Input your guess:</label>
         {% csrf_token %}
+        {{ form|crispy }}
         <input type="text" name="guess" size="20" id="guess"/>
         </p>
         <input type="submit"/>

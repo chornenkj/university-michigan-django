@@ -11,7 +11,9 @@ Guess Game by Chornenkj
     <p>between 0 and 500</p>
 
     <p>
+    {% load crispy_forms_tags %}
     <form action="{% url 'guess:next_try' %}">
+        {{ form|crispy }}
     <input type="checkbox" name="flag">Show game history<br/>
     <input type="submit" value="&gt;&gt;&gt;Start game">
     </form>
