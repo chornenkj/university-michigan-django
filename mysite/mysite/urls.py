@@ -35,6 +35,9 @@ urlpatterns = [
     # Guess Game by Chornenkj
     path('guess/', include('guess.urls')),
 
+    #Ads app to pass DJ4E module on Owned Rows and Users` permittions
+    path('ads/', include('ads.urls')),
+
     # Autos CRUD app to pass course DJ4E module
     # on creating, retreaving, updating and deleting forms
     path('autos/', include('autos.urls')),

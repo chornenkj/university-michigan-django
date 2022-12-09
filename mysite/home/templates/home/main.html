@@ -9,31 +9,41 @@ Chornenkj`s Django Projects
 
     <p style="font-size: medium">You can view Django codes of this site at
         <a href="https://github.com/chornenkj/university-michigan-django.git">
-            Github repository project link</a></p><br/>
+            Github repository project link</a></p>
 
     <p style="font-size: medium">You can also view <a href="{% url 'site_path' '' %}"
-        target="_blank">working files directory</a></p><br/>
+        target="_blank">working files directory</a></p>
+
+    <p style="font-size: medium">Some apps require user login.<br/>
+        So to check these apps functionality, please, use one of the predefined users credentials:<br/>
+        <p><ul>
+            <li>user login: <strong>dj4e_user1</strong>, password: <strong>Meow_fb5185_41</strong></li>
+            <li>user login: <strong>dj4e_user2</strong>, password: <strong>Meow_42_fb5185</strong></li>
+        </ul></p></p><br/>
+
 <ul>
     <li><p style="font-size: large"><a href="{% url 'guess:index' %}">Guess Game by Chornenkj</a></p>
     <p style="font-size: medium">My game to guess a number.
     Your game is saved to session, so you can continue anytime you like.</p><br></li>
 
+    <li><p style="font-size: large"><a href="{% url 'ads:all' %}">Ads List</a></p>
+    <p style="font-size: medium">Ads app let you create ads.<br/>
+    You can create, retrieve, update and delete your ads using your login account.<br/>
+    You can also browse ads of other users, but you are not allowed to edit or delete them.</p><br></li>
+
     <li><p style="font-size: large"><a href="{% url 'cats:all' %}">Cats CRUD</a></p>
     <p style="font-size: medium">Cats app let you create Breeds, and create Cats on their base.<br/>
     You can create, retrieve, update and delete data (Breeds and Cats) with this app.<br/>
-    Generic views (ListView, CreateView, UpdateView and DeleteView) are used only.<br/>
-    This app requires login. Use username 'freeuser' and password '1256qwty' to get access.<br/>
-    Also add a link to python script which refreshes Cats and Breeds database uploading it
-    from csv-file.</p><br></li>
+    Also add a link to <em>python script which refreshes Cats and Breeds database uploading it
+    from csv-file</em>.</p><br></li>
 
     <li><p style="font-size: large"><a href="{% url 'autos:all' %}">Autos CRUD</a></p>
     <p style="font-size: medium">Autos app let you create Makes, and create Autos on their base.<br/>
-    You can create, retrieve, update and delete data (Makes and Autos) with this app.<br/>
-    This app requires login. Use username 'freeuser' and password '1256qwty' to get access.</p><br></li>
+    You can create, retrieve, update and delete data (Makes and Autos) with this app.</p><br></li>
 
-    <li><p style="font-size: large"><a href="{% url 'polls:index' %}">A Polls Application</a></p>
+    <li><p style="font-size: large"><a href="{% url 'polls:index' %}">Polls</a></p>
     <p style="font-size: medium">This app is to vote to the Questions.
-    Questions are set in admin. So you cannot add your ones.</p><br></li>
+    Questions are set in admin app. So you cannot add your ones.</p><br></li>
 
     <li><p style="font-size: large"><a href="{% url 'hello' %}">Test the session</a></p>
     <p style="font-size: medium">This app just uses session to keep amount of page loads.
