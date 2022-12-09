@@ -12,7 +12,10 @@ class Game(models.Model):
 
     # string representation for a game
     def __str__(self):
-        return 'Game started {} with {} tries'#.format(str(self.date),str(self.guess_set.count()))
+        return 'Game started {} with {} tries'.format(
+            str(self.date),
+            str(self.guess_set.count())
+        )
 
     # function to check guess number
     # returns a message to present on the page
@@ -21,13 +24,21 @@ class Game(models.Model):
         if guess:
             try:
                 # in case the guess is correct
-                if int(guess) < self.guess_try:
+                int_guess = int(guess)
+
+            # in case the guess is not correct
+            except:
+                msg = 'Bad guess format!'
+
+            # handle guess if it is correct
+            else:
+                if int_guess < self.guess_try:
                     msg = 'Guess {} is too low'.format(str(guess))
-                elif int(guess) > self.guess_try:
+                elif int_guess > self.guess_try:
                     msg = 'Guess {} is too high'.format(str(guess))
                 else:
                     msg = 'Congrats! {} is correct!/n You used {} attempts!'.format(
-                        str(guess),
+                        guess,
                         str(self.guess_set.count())
                     )
 
@@ -38,9 +49,6 @@ class Game(models.Model):
                 # create a guess object for current guess
                 self.guess_set.create(guess=guess, message=msg)
 
-            # in case the guess is not correct
-            except:
-                msg = 'Bad guess format!'
         return msg
 
 
