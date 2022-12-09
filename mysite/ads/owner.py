@@ -1,7 +1,8 @@
-
 from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView
-
 from django.contrib.auth.mixins import LoginRequiredMixin
+
+
+# Owner classes which perform actions to permit access for users to their data only
 
 
 class OwnerListView(ListView):
@@ -25,9 +26,18 @@ class OwnerCreateView(LoginRequiredMixin, CreateView):
     # Saves the form instance, sets the current object for the view, and redirects to get_success_url().
     def form_valid(self, form):
         print('form_valid called')
+
+        # Save the form entries to the object
+        # Commit=False is used to prevent saving object to database
         object = form.save(commit=False)
+
+        # Assign user value to .owner field
         object.owner = self.request.user
+
+        # Now save the object data to database
         object.save()
+
+        # Before return call parent method
         return super(OwnerCreateView, self).form_valid(form)
 
 
@@ -37,6 +47,8 @@ class OwnerUpdateView(LoginRequiredMixin, UpdateView):
     queryset to the requesting user.
     """
 
+    # Call parent method which returns all() objects and then
+    # filter to keep only user's data entries
     def get_queryset(self):
         print('update get_queryset called')
         """ Limit a User to only modifying their own data. """
@@ -50,6 +62,8 @@ class OwnerDeleteView(LoginRequiredMixin, DeleteView):
     user's data.
     """
 
+    # Call parent method which returns all() objects and then
+    # filter to keep only user's data entries
     def get_queryset(self):
         print('delete get_queryset called')
         qs = super(OwnerDeleteView, self).get_queryset()
