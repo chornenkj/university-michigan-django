@@ -6,34 +6,46 @@ University of Michigan 'Django for everybody'.
 
 But later on, I used this PythonAnywhere service to locate my own project apps.
 
+Some apps require user login. So to check these apps functionality, please, use one of the predefined users credentials:
+<ul>
+  <li>user login: dj4e_user1, password: Meow_fb5185_41</li>
+  <li>user login: dj4e_user2, password: Meow_42_fb5185</li>
+</ul>
+  
 ## My project apps are as follows:
 
 ## 1. Guess game
 #### URL : <https://chornenkj.pythonanywhere.com/guess/>
 It is my game to guess a number. Your game is saved to session, so you can continue anytime you like.
 
-## 2. Cats CRUD
+## 2. Ads
+#### URL : <https://chornenkj.pythonanywhere.com/ads/>
+Ads app let you create ads.<br/>
+You can create, retrieve, update and delete your ads using your login account.<br/>
+You can also browse ads of other users, but you are not allowed to edit or delete them.
+
+## 3. Cats CRUD
 #### URL : <https://chornenkj.pythonanywhere.com/cats/>
 Cats CRUD app let you create Breeds, and create Cats on their base.<br/>
 You can create, retrieve, update and delete data (Breeds and Cats).<br/>
 This app requires login. Use username 'freeuser' and password '1256qwty' to get access.<br/>
 Also add a link to python script which refreshes Cats and Breeds database uploading it from csv-file.
 
-## 3. Files Browser
+## 4. Files Browser
 #### URL : <https://chornenkj.pythonanywhere.com/site/>
 You can browse my working files, such as 'meow.csv' file which contains data to refresh Cats database.
 
-## 4. Autos CRUD
+## 5. Autos CRUD
 #### URL : <https://chornenkj.pythonanywhere.com/autos/>
 Autos app let you create Makes, and create Autos on their base.<br/>
 You can create, retrieve, update and delete data (Makes and Autos) with this app.<br/>
 This app requires login. Use username 'freeuser' and password '1256qwty' to get access.
 
-## 5. A Polls Application
+## 6. Polls
 #### URL : <https://chornenkj.pythonanywhere.com/polls/>
 This app is to vote to the Questions. Questions are set in admin. So you cannot add your ones.
 
-## 6. Test the session
+## 7. Test the session
 #### URL : <https://chornenkj.pythonanywhere.com/hello/>
 This app just uses session to keep amount of page loads. If it is greater than 4, it refreshes.
 
