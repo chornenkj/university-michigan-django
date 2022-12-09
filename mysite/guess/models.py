@@ -26,7 +26,7 @@ class Game(models.Model):
                 elif int(guess) > self.guess_try:
                     msg = 'Guess {} is too high'.format(str(guess))
                 else:
-                    msg = 'Congrats! {} is correct guess!\nYou used {} attempts!'.format(
+                    msg = 'Congrats! {} is correct!/n You used {} attempts!'.format(
                         str(guess),
                         str(self.guess_set.count())
                     )
@@ -53,7 +53,7 @@ class Guess(models.Model):
     # date a guess was submitted
     date = models.DateTimeField(auto_now=True)
     # message displayed for your guess
-    message = models.CharField(max_length=30, default='')
+    message = models.CharField(max_length=80, default='')
 
     # string representation for a single guess
     def __str__(self):

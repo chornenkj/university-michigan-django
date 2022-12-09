@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'hello.apps.HelloConfig',
     'autos.apps.AutosConfig',
     'cats.apps.CatsConfig',
+    'ads.apps.AdsConfig',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -55,6 +56,7 @@ INSTALLED_APPS = [
 
     'django_extensions',
     'crispy_forms',
+    'django.contrib.humanize',
 ]
 
 MIDDLEWARE = [
