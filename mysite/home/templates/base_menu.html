@@ -6,25 +6,31 @@
         <a class="navbar-brand" href="/">{{ settings.PROJECT_NAME }}</a>
     </div>
     <!-- https://stackoverflow.com/questions/22047251/django-dynamically-get-view-url-and-check-if-its-the-current-page -->
+    {% url 'ads:all' as ads %}
     <ul class="nav navbar-nav">
-      {% url 'ads' as ads %}
-      <li {% if request.get_full_path == ads %}class="active"{% endif %}>
-          <a href="{% url 'ads:all' %}">Ads</a></li>
+        <li {% if request.get_full_path == ads %}class="active"{% endif %}>
+            <a href="{% url 'ads:all' %}">Ads</a>
+        </li>
+
+        {% url 'ads:ad_create' as ads %}
+        <li {% if request.get_full_path == ads %}class="active"{% endif %}>
+            <a href="{% url 'ads:ad_create' %}">Create Ad</a>
+        </li>
     </ul>
-    
+
     <ul class="nav navbar-nav navbar-right">
-        {% if user.is_authenticated %}
         <li>
         <a href="{% url 'home' %}">Return to Apps</a>
         </li>
-        <li>
-        <a href="{% url 'ads:ad_create' %}">Create Ad</a>
-        </li>
+        {% if user.is_authenticated %}
+
         <li class="dropdown">
             <a href="#" data-toggle="dropdown" class="dropdown-toggle"><b class="caret"></b></a>
+
             <ul class="dropdown-menu">
-                <li><a href="{% url 'logout' %}?next={% url 'ads:all' %}">Logout</a></li>
+            <li><a href="{% url 'logout' %}?next={% url 'ads:all' %}">Logout</a></li>
             </ul>
+
         </li>
         {% else %}
         <li>
