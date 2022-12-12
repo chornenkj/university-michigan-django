@@ -60,3 +60,4 @@ def create_db_file_from_csv():
             region=row_region,
             iso=row_iso
         )
+        row_site.save(using='unesco')
