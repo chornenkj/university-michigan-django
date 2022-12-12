@@ -7,7 +7,7 @@ UNESCO Database by Chornenkj
 {% block content %}
 <h1>UNESCO Database by Chornenkj</h1>
 
-<p>All data are reloaded successfully.<br/>
+<p>All data are reloaded successfully ({{ count }} entries).<br/>
 You can download database file from <a href="{% url 'site_path' 'unesco/' %}"
     target="_blank">this link</a>.</p>
 <p><a href="{% url 'unesco:reload' %}">Reload Database</a></p>
