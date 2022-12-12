@@ -1,6 +1,13 @@
 {% extends "base_menu.html" %}
+
+{% block title %}
+Ads CRUD and Users
+{% endblock %}
+
 {% load crispy_forms_tags %}
 {% block content %}
+<h1>Edit your Ad</h1>
+
 <p>
   <form action="" method="post">
     {% csrf_token %}
