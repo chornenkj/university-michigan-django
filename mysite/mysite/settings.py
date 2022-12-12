@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'autos.apps.AutosConfig',
     'cats.apps.CatsConfig',
     'ads.apps.AdsConfig',
+    'unesco.apps.UnescoConfig',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -108,6 +109,11 @@ DATABASES = {
     'sqlite3': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    },
+
+    'unesco': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'site/unesco/unesco.sqlite3'),
     },
 }
 

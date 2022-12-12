@@ -46,6 +46,9 @@ urlpatterns = [
     # on creating a database
     path('cats/', include('cats.urls')),
 
+    # Unesco app to create database from csv-file
+    path('unesco/', include('unesco.urls')),
+
     # URLs for login and logout
     path('accounts/', include('django.contrib.auth.urls')),
 

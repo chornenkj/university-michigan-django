@@ -1,0 +1,16 @@
+{% extends "base_bootstrap.html" %}
+
+{% block title %}
+UNESCO Database by Chornenkj
+{% endblock %}
+
+{% block content %}
+<h1>UNESCO Database by Chornenkj</h1>
+
+<p>All data are reloaded successfully.<br/>
+You can download database file from <a href="{% url 'site_path' 'unesco/' %}"
+    target="_blank">this link</a>.</p>
+<p><a href="{% url 'unesco:reload' %}">Reload Database</a></p>
+<p><a href="{% url 'home' %}">Back to Apps</a></p>
+
+{% endblock %}

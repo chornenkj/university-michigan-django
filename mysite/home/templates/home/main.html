@@ -22,6 +22,14 @@ Chornenkj`s Django Projects
         </ul></p></p><br/>
 
 <ul>
+    <li><p style="font-size: large"><a href="{% url 'unesco:index' %}">
+        Generate UNESCO Database</a></p>
+    <p style="font-size: medium">This app uses script which loads data from csv-file 'unesco.csv'
+        and generates an SQLite database of UNESCO sites.<br/>
+    This database is separated from the default project database (MySQL).<br/>
+    You can browse and download both files from <a href="{% url 'site_path' 'unesco/' %}"
+        target="_blank">this link</a>.</p><br></li>
+
     <li><p style="font-size: large"><a href="{% url 'guess:index' %}">Guess Game by Chornenkj</a></p>
     <p style="font-size: medium">My game to guess a number.
     Your game is saved to session, so you can continue anytime you like.</p><br></li>
