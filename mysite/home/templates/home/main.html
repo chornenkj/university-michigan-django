@@ -21,7 +21,17 @@ Chornenkj`s Django Projects
             <li>user login: <strong>dj4e_user2</strong>, password: <strong>Meow_42_fb5185</strong></li>
         </ul></p></p><br/>
 
-<ul>
+<ol style="font-size: large">
+    <li><p style="font-size: large"><a href="{% url 'ads:all' %}">Ads CRUD, Users, and Pictures</a></p>
+    <p style="font-size: medium">Ads app let you create ads.<br/>
+    <em>App functionality includes</em>:<br/>
+    <ul>
+    <li>You can create, retrieve, update and delete your ads using your login account.</li>
+    <li>You can also browse ads of other users, but you are not allowed to edit or delete them.</li>
+    <li>You can add and update pictures for each ad.</li>
+    </ul>
+    </p><br></li>
+
     <li><p style="font-size: large"><a href="{% url 'unesco:index' %}">
         Generate UNESCO Database</a></p>
     <p style="font-size: medium">This app uses script which loads data from csv-file 'unesco.csv'
@@ -33,11 +43,6 @@ Chornenkj`s Django Projects
     <li><p style="font-size: large"><a href="{% url 'guess:index' %}">Guess Game by Chornenkj</a></p>
     <p style="font-size: medium">My game to guess a number.
     Your game is saved to session, so you can continue anytime you like.</p><br></li>
-
-    <li><p style="font-size: large"><a href="{% url 'ads:all' %}">Ads CRUD and Users</a></p>
-    <p style="font-size: medium">Ads app let you create ads.<br/>
-    You can create, retrieve, update and delete your ads using your login account.<br/>
-    You can also browse ads of other users, but you are not allowed to edit or delete them.</p><br></li>
 
     <li><p style="font-size: large"><a href="{% url 'cats:all' %}">Cats CRUD</a></p>
     <p style="font-size: medium">Cats app let you create Breeds, and create Cats on their base.<br/>
@@ -56,6 +61,6 @@ Chornenkj`s Django Projects
     <li><p style="font-size: large"><a href="{% url 'hello' %}">Test the session</a></p>
     <p style="font-size: medium">This app just uses session to keep amount of page loads.
     If it is greater than 4, it refreshes.</p><br></li>
-</ul>
+</ol>
 
 {% endblock %}
