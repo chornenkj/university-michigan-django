@@ -6,7 +6,7 @@ Ads CRUD, Users, Pictures and Comments
 
 {% load crispy_forms_tags %}
 {% block content %}
-<h1>Create (Edit) your Ad</h1>
+<h1>{% if edit %}Edit{% else %}Create{% endif %} your Ad</h1>
 
 <p>
   <form action="" method="post" id="upload_form" enctype="multipart/form-data">

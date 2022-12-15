@@ -28,6 +28,7 @@ class AdCreateView(LoginRequiredMixin, View):
         # Create unbound CreateForm instance to pass to template
         form = CreateForm()
         ctx = {'form': form}
+        ctx['edit'] = False
         return render(request, self.template_name, ctx)
 
     def post(self, request, pk=None):
@@ -38,6 +39,7 @@ class AdCreateView(LoginRequiredMixin, View):
         # The form will contain previous data from the POST data
         if not form.is_valid():
             ctx = {'form': form}
+            ctx['edit'] = False
             return render(request, self.template_name, ctx)
 
         # If form is valid add owner to the model before saving
@@ -58,6 +60,7 @@ class AdUpdateView(LoginRequiredMixin, View):
         x = get_object_or_404(Ad, id=pk, owner=self.request.user)
         form = CreateForm(instance=x)
         ctx = {'form': form}
+        ctx['edit'] = True
         return render(request, self.template_name, ctx)
 
     def post(self, request, pk):
@@ -70,6 +73,7 @@ class AdUpdateView(LoginRequiredMixin, View):
         # The form will contain previous data from the POST data
         if not form.is_valid():
             ctx = {'form': form}
+            ctx['edit'] = True
             return render(request, self.template_name, ctx)
 
         # If form is valid save form data to database
