@@ -2,6 +2,7 @@ from django.shortcuts import redirect, render, get_object_or_404
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import View
+from django.http import HttpResponse
 
 from .models import Ad
 from .owner import OwnerListView, OwnerDetailView, OwnerDeleteView
@@ -21,7 +22,7 @@ class AdDetailView(OwnerDetailView):
 
 
 class AdCreateView(LoginRequiredMixin, View):
-    template_name = 'ads/form.html'
+    template_name = 'ads/ad_form.html'
     success_url = reverse_lazy('ads:all')
 
     def get(self, request, pk=None):
@@ -51,7 +52,7 @@ class AdCreateView(LoginRequiredMixin, View):
 
 
 class AdUpdateView(LoginRequiredMixin, View):
-    template_name = 'ads/form.html'
+    template_name = 'ads/ad_form.html'
     success_url = reverse_lazy('ads:all')
 
     def get(self, request, pk):
@@ -85,3 +86,13 @@ class AdDeleteView(OwnerDeleteView):
     model = Ad
     # By convention:
     # template_name = "ads/ad_confirm_delete.html"
+
+
+# The view to show picture only
+def stream_file(request, pk):
+    x = get_object_or_404(Ad, id=pk)
+    response = HttpResponse()
+    response['Content-Type'] = x.content_type
+    response['Content-Length'] = len(x.picture)
+    response.write(x.picture)
+    return response
