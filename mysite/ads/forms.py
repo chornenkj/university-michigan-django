@@ -1,7 +1,7 @@
 from django import forms
 from .models import Ad
 from django.core.files.uploadedfile import InMemoryUploadedFile
-from humanize import naturalsize
+from ads.humanize import naturalsize
 
 
 # Create the form class
