@@ -17,6 +17,7 @@ class AdListView(OwnerListView):
 
 class AdDetailView(OwnerDetailView):
     model = Ad
+    template_name = 'ads/ad_detail.html'
     def get(self, request, pk):
         x = Ad.objects.get(id=pk)
         comments = Comment.objects.filter(ad=x).order_by('-updated_at')
@@ -114,7 +115,7 @@ class CommentCreateView(LoginRequiredMixin, View):
 
 class CommentDeleteView(OwnerDeleteView):
     model = Comment
-    template_name = "forums/comment_delete.html"
+    template_name = "ads/comment_delete.html"
 
     # Generate success_url dynamically to return to the ad page
     # https://stackoverflow.com/questions/26290415/deleteview-with-a-dynamic-success-url-dependent-on-id
