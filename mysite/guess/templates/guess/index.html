@@ -15,7 +15,7 @@ Guess Game by Chornenkj
     <form action="{% url 'guess:next_try' %}">
         {{ form|crispy }}
     <input type="checkbox" name="flag">Show game history<br/>
-    <input type="submit" value="&gt;&gt;&gt;Start game">
+    <input type="submit" class="btn btn-primary" value="&gt;&gt;&gt;Start game">
     </form>
     </p>
 

@@ -11,6 +11,7 @@ Ads CRUD and Users
 
 <form action="" method="POST">
   {% csrf_token %}
-  <input type="submit" value="Yes, delete.">
+  <input type="submit" class="btn btn-primary" value="Yes, delete.">
+  <a href="{% url 'ads:all' %}" class="btn btn-secondary">Cancel</a>
 </form>
 {% endblock %}

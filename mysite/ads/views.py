@@ -24,8 +24,6 @@ class AdDetailView(OwnerDetailView):
         comment_form = CommentForm()
         context = { 'ad' : x, 'comments': comments, 'comment_form': comment_form }
         return render(request, self.template_name, context)
-    # By convention:
-    # template_name = "ads/ad_detail.html"
 
 
 class AdCreateView(LoginRequiredMixin, View):

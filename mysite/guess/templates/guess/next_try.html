@@ -19,7 +19,7 @@ Guess Game by Chornenkj
         {{ form|crispy }}
         <input type="text" name="guess" size="20" id="guess"/>
         </p>
-        <input type="submit"/>
+        <input type="submit" class="btn btn-primary" value="Submit"/>
     </form>
     {% endif %}
 
@@ -45,7 +45,7 @@ Guess Game by Chornenkj
     {% if cs %}
     <br>
     <details>
-    <summary>Session:</summary>
+    <summary class="btn btn-primary">Session:</summary>
     {% for key, value in cs.items %}
     <p>{{ key }} : {{ value }}</p>
     {% endfor %}
@@ -55,7 +55,7 @@ Guess Game by Chornenkj
     {% if cc %}
     <br>
     <details>
-    <summary>Cookies:</summary>
+    <summary class="btn btn-primary">Cookies:</summary>
     {% for key, value in cc.items %}
     <p>{{ key }} : {{ value }}</p>
     {% endfor %}

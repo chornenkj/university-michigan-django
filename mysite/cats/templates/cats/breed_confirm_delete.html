@@ -13,7 +13,8 @@ Cats CRUD
     <p>Are you sure you want to delete "{{ object }}"?</p>
     {{ form|crispy }}
     <br/>
-    <input type="submit" value="Yes, delete.">
-    <input type="submit" onclick="window.location='{% url 'cats:all' %}'; return false;" value="Cancel">
+    <input type="submit" class="btn btn-primary" value="Yes, delete.">
+    <input type="submit" class="btn btn-secondary"
+        onclick="window.location='{% url 'cats:all' %}'; return false;" value="Cancel">
 </form>
 {% endblock %}

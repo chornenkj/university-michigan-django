@@ -12,9 +12,11 @@ Autos app by Chornenkj
 
 {% load crispy_forms_tags %}
 <form action="" method="POST">
-  {% csrf_token %}
-  {{ form|crispy }}
-  <input type="submit" value="Yes, delete.">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <input class="btn btn-primary" type="submit" value="Yes, delete.">
+    <input type="submit" class="btn btn-secondary"
+        onclick="window.location='{% url 'autos:all' %}' ; return false;" value="Cancel">
 </form>
 
 {% endblock %}

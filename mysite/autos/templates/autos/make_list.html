@@ -19,7 +19,7 @@ Autos app by Chornenkj
   {% else %}
     <p>There are no makes in the library.</p>
   {% endif %}
-  <p><a href="{% url 'autos:make_create' %}">Add a make</a></p>
+  <p><a class="btn btn-primary" href="{% url 'autos:make_create' %}">Add a make</a></p>
   <p>
     <a href="{% url 'autos:all' %}">Back to autos</a>
   </p>

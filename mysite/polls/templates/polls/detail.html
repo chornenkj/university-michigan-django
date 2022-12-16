@@ -17,7 +17,7 @@ Polls by Chornenkj
             <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
         {% endfor %}
     </fieldset>
-    <input type="submit" value="Vote">
+    <input class="btn btn-primary" type="submit" value="Vote">
     </form>
 
     <p><a href="{% url 'home' %}">Return to Apps</a></p>

@@ -14,7 +14,7 @@ Polls by Chornenkj
     {% endfor %}
     </ul>
 
-    <p><a href="{% url 'polls:detail' question.id %}">Vote again?</a></p>
+    <p><a href="{% url 'polls:detail' question.id %}" class="btn btn-primary">Vote again?</a></p>
     <p><a href="{% url 'polls:index' %}">Return to Polls</a></p>
     <p><a href="{% url 'home' %}">Return to Apps</a></p>
 

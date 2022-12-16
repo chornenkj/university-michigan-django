@@ -22,14 +22,15 @@ Autos app by Chornenkj
   {% endif %}
   <p>
     {% if make_count > 0 %}
-      <a href="{% url 'autos:auto_create' %}">Add an auto</a>
+      <a class="btn btn-primary" href="{% url 'autos:auto_create' %}">Add an auto</a>
     {% else %}
       Please add a make before you add an auto.
     {% endif %}
   </p>
   <p>
-  <a href="{% url 'autos:make_list' %}">View makes</a> ({{ make_count }}) |
-    <a href="{% url 'autos:make_create' %}">Add a make</a>
+  <a class="btn btn-secondary" href="{% url 'autos:make_list' %}">View makes</a>
+    ({{ make_count }}) |
+    <a class="btn btn-secondary" href="{% url 'autos:make_create' %}">Add a make</a>
   </p>
 
     <p><a href="{% url 'home' %}">Return to Apps</a></p>
