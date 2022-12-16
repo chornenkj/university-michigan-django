@@ -8,8 +8,8 @@ Now, I use PythonAnywhere service and this repo to locate my own project apps.
 
 Some apps require user login. So to check these apps functionality, please, use one of the predefined users credentials:
 <ul>
-  <li>user login: dj4e_user1, password: Meow_fb5185_41</li>
-  <li>user login: dj4e_user2, password: Meow_42_fb5185</li>
+  <li>user login: dj4e_user1, password: Meow_f9b784_41</li>
+  <li>user login: dj4e_user2, password: Meow_42_f9b784</li>
 </ul>
   
 ## My project apps are the follows:
@@ -21,6 +21,7 @@ Ads app let you create ads. <em>App functionality includes</em>:
 <li>You can create, retrieve, update and delete your ads using your login account.</li>
 <li>You can also browse ads of other users, but you are not allowed to edit or delete them.</li>
 <li>You can add and update pictures for each ad.</li>
+<li>You can comment all ads and delete your comments.</li>
 </ul>
 
 ## Generate UNESCO Database
