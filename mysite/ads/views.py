@@ -4,9 +4,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import View
 from django.http import HttpResponse
 
-from .models import Ad
+from .models import Ad, Comment
 from .owner import OwnerListView, OwnerDetailView, OwnerDeleteView
-from .forms import CreateForm
+from .forms import CreateForm, CommentForm
 
 
 class AdListView(OwnerListView):
@@ -17,6 +17,12 @@ class AdListView(OwnerListView):
 
 class AdDetailView(OwnerDetailView):
     model = Ad
+    def get(self, request, pk):
+        x = Ad.objects.get(id=pk)
+        comments = Comment.objects.filter(ad=x).order_by('-updated_at')
+        comment_form = CommentForm()
+        context = { 'ad' : x, 'comments': comments, 'comment_form': comment_form }
+        return render(request, self.template_name, context)
     # By convention:
     # template_name = "ads/ad_detail.html"
 
