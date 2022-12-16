@@ -16,7 +16,7 @@ Chornenkj`s Django Projects
 
     <p style="font-size: medium">Some apps require user login.<br/>
         So to check these apps functionality, please, use one of the predefined users credentials:<br/>
-        <p><ul>
+        <p><ul style="font-size: medium">
             <li>user login: <strong>dj4e_user1</strong>, password: <strong>Meow_fb5185_41</strong></li>
             <li>user login: <strong>dj4e_user2</strong>, password: <strong>Meow_42_fb5185</strong></li>
         </ul></p></p><br/>
@@ -24,20 +24,20 @@ Chornenkj`s Django Projects
 <ol style="font-size: large">
     <li><p style="font-size: large"><a href="{% url 'ads:all' %}">Ads CRUD, Users, and Pictures</a></p>
     <p style="font-size: medium">Ads app let you create ads.<br/>
-    <em>App functionality includes</em>:<br/>
-    <ul>
+    <em>App functionality includes</em>:</p>
+    <ul style="font-size: medium">
     <li>You can create, retrieve, update and delete your ads using your login account.</li>
     <li>You can also browse ads of other users, but you are not allowed to edit or delete them.</li>
     <li>You can add and update pictures for each ad.</li>
     </ul>
-    </p><br></li>
+    <br></li>
 
     <li><p style="font-size: large"><a href="{% url 'unesco:index' %}">
         Generate UNESCO Database</a></p>
     <p style="font-size: medium">This app uses script which loads data from csv-file 'unesco.csv'
         and generates an SQLite database of UNESCO sites.<br/>
-    This database is separated from the default project database (MySQL).<br/>
-    You can browse and download both files from <a href="{% url 'site_path' 'unesco/' %}"
+    <em>This database is separated from the default project database (MySQL)</em>.<br/>
+    You can download both files from <a href="{% url 'site_path' 'unesco/' %}"
         target="_blank">this link</a>.</p><br></li>
 
     <li><p style="font-size: large"><a href="{% url 'guess:index' %}">Guess Game by Chornenkj</a></p>
