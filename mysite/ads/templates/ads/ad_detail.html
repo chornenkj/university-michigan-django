@@ -59,8 +59,7 @@ Ads CRUD, Users, Pictures and Comments
 {% endif %}
 
 {% for comment in comments %}
-<p> {{ comment.text }}
-({{ comment.updated_at|naturaltime }})
+<p>{{ comment.text }} ({{ comment.owner }} | {{ comment.updated_at|naturaltime }})
 {% if user == comment.owner %}
 <a href="{% url 'ads:comment_delete' comment.id %}"><i class="fa fa-trash"></i></a>
 {% endif %}
