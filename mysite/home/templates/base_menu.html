@@ -1,4 +1,7 @@
 {% extends "base_bootstrap.html" %}
+
+{% load app_tags %} <!-- see home/templatetags/app_tags.py and dj4e-samples/settings.py -->
+
 {% block navbar %}
 <nav class="navbar navbar-default navbar-inverse">
   <div class="container-fluid">
@@ -25,7 +28,9 @@
         {% if user.is_authenticated %}
 
         <li class="dropdown">
-            <a href="#" data-toggle="dropdown" class="dropdown-toggle">{{ user }}<b class="caret"></b></a>
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                <img style="width: 25px;" src="{{ user|gravatar:60 }}"/>&nbsp;{{ user }}
+                <b class="caret"></b></a>
 
             <ul class="dropdown-menu">
             <li><a href="{% url 'logout' %}?next={% url 'ads:all' %}">Logout</a></li>
