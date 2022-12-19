@@ -2,11 +2,14 @@ from django.shortcuts import redirect, render, get_object_or_404
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import View
+from django.db.models import Q
 from django.http import HttpResponse
 
+from mysite import settings
 from .models import Ad, Comment, Fav
 from .owner import OwnerListView, OwnerDetailView, OwnerDeleteView
 from .forms import CreateForm, CommentForm
+from .utils import dump_queries
 
 
 class AdListView(OwnerListView):
@@ -14,20 +17,50 @@ class AdListView(OwnerListView):
     template_name = "ads/ad_list.html"
 
     def get(self, request) :
-        ad_list = Ad.objects.all()
+
+        # Get search value if exists, else False
+        strval = request.GET.get("search", False)
+        if strval :
+            # Simple title-only search
+            # objects = Post.objects.filter(title__contains=strval).select_related().order_by('-updated_at')[:10]
+
+            # Multi-field search
+            # __icontains for case-insensitive search
+
+            # Create query to filter by search value case-insensitive
+            query = Q(title__icontains=strval)
+            query.add(Q(text__icontains=strval), Q.OR)
+            ad_list = Ad.objects.filter(query).select_related().order_by('-updated_at')[:10]
+        else :
+            # Get 10 most recent Ad objects if no search value
+            ad_list = Ad.objects.all().order_by('-updated_at')[:10]
+
+        # Create list of favorites for logged in users
         favorites = list()
         if request.user.is_authenticated:
             # rows = [{'id': 2}, {'id': 4} ... ]  (A list of rows)
             rows = request.user.favorite_ads.values('id')
             # favorites = [2, 4, ...] using list comprehension
             favorites = [ row['id'] for row in rows ]
-        ctx = {'ad_list' : ad_list, 'favorites': favorites}
-        return render(request, self.template_name, ctx)
+
+        # Create context to pass to render a page
+        ctx = {
+            'ad_list' : ad_list,
+            'favorites': favorites,
+            'search': strval
+        }
+
+        # Code to print queries
+        retval = render(request, self.template_name, ctx)
+        if settings.DEBUG:
+            dump_queries()
+        return retval
 
 
 class AdDetailView(OwnerDetailView):
     model = Ad
     template_name = 'ads/ad_detail.html'
+
     def get(self, request, pk):
         x = Ad.objects.get(id=pk)
         comments = Comment.objects.filter(ad=x).order_by('-updated_at')

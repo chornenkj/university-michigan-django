@@ -1,13 +1,25 @@
 {% extends "base_menu.html" %}
 
 {% block title %}
-Ads CRUD and Users
+Ads CRUD, Users, Pictures, Comments, Favorites and Search
 {% endblock %}
 
 {% block content %}
 <h1>Ads List</h1>
-<p>
 
+<!-- form with search field -->
+<!-- https://www.w3schools.com/howto/howto_css_search_button.asp -->
+<div style="float:right">
+<form>
+    <input type="text" placeholder="Search..." name="search"
+    {% if search %} value="{{ search }}" {% endif %}
+    >
+    <button type="submit"><i class="fa fa-search"></i></button>
+    <a href="{% url 'ads:all' %}"><i class="fa fa-undo"></i></a>
+</form>
+</div>
+
+<p>
 <ul>
     {% for item in ad_list %}
     <li>
@@ -18,8 +30,10 @@ Ads CRUD and Users
         <a href="{% url 'ads:ad_delete' item.id %}">Delete</a>)
         {% endif %}
 
-        {% if user.is_authenticated %}
         <!-- Two hrefs with two stacked icons each - one showing and one hidden -->
+        <!-- Stars (favorites - for authenticated users only) -->
+        {% if user.is_authenticated %}
+        <!-- first star - for favourites -->
         <a href="#" onclick=
             "adPost('{% url 'ads:ad_unfavorite' item.id %}', {{ item.id }} ); return false;"
             {% if item.id not in favorites %} style="display: none;" {% endif %}
@@ -29,7 +43,7 @@ Ads CRUD and Users
         <i class="fa fa-star-o fa-stack-1x"></i>
         </span>
         </a>
-        <!-- the second href -->
+        <!-- the second star - for not-favorites -->
         <a href="#" onclick=
              "adPost('{% url 'ads:ad_favorite' item.id %}', {{ item.id }} ); return false;"
             {% if item.id in favorites %} style="display: none;" {% endif %}
@@ -40,6 +54,25 @@ Ads CRUD and Users
         </span>
         </a>
         {% endif %}
+
+        <!-- brief details for ad -->
+        <!-- Ad.text -->
+        <div style="left:10px">
+            {% if item.text|length < 100 %}
+                {{ item.text }}
+            {% else %}
+                {{ item.text|slice:"0:99" }}
+                <a href="{% url 'ads:ad_detail' item.id %}">...</a>
+            {% endif %}
+        </div>
+        <!-- Ad.updated_at -->
+        <small>
+        {% if item.owner.username %}
+            posted by {{ item.owner.username }}
+        {% endif %}
+        {% load humanize %}
+        {{ item.updated_at|naturaltime }}
+        </small>
     </li>
     {% empty %}
     <p>There are no articles in the database.</p>
@@ -52,6 +85,8 @@ Ads CRUD and Users
     <a href="{% url 'home' %}">Return to all apps</a>
 </p>
 
+<!-- script to send AJAX to create or delete connection between
+    Ad and USER_AUTH_MODEL through Fav, and to toggle Fav stars-->
 <script>
 function adPost(url, ad_id) {
     console.log('Requesting JSON');
