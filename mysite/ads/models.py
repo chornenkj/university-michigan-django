@@ -72,7 +72,9 @@ class Fav(models.Model) :
 
     # https://docs.djangoproject.com/en/4.0/ref/models/options/#unique-together
     class Meta:
-        unique_together = ('ad', 'user')
+        constraints = [
+            models.UniqueConstraint(fields=['user', 'ad'], name='unique_together'),
+        ]
 
     def __str__(self) :
         return '{} likes "{}"'.format(self.user.username, self.ad.title[:10])
