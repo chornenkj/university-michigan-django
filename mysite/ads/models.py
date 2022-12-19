@@ -2,6 +2,8 @@ from django.db import models
 from django.core.validators import MinLengthValidator
 from django.conf import settings
 
+from taggit.managers import TaggableManager
+
 
 # Class for Ads
 class Ad(models.Model) :
@@ -39,6 +41,9 @@ class Ad(models.Model) :
         through='Fav',
         related_name='favorite_ads'
     )
+
+    # Apply tagging to this model
+    tags = TaggableManager(blank=True)
 
     # Date/time of creation and modification - autofields
     created_at = models.DateTimeField(auto_now_add=True)

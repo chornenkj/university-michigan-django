@@ -38,6 +38,14 @@ Ads CRUD, Users, Pictures and Comments
 </span>
 <h1>{{ ad.title }}</h1>
 
+{% if ad.tags.all %}
+<p>Tags:
+  {% for tag in ad.tags.all %}
+  <span style="border:1px grey solid; background-color: LightGreen;">{{ tag }}</span>
+  {% endfor %}
+</p>
+{% endif %}
+
 {% if ad.content_type %}
 <img style="float:right; max-width:50%;" src="{% url 'ads:ad_picture' ad.id %}"
     onclick="document.getElementById('overlay').style.display = 'block';">

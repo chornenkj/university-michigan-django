@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'crispy_forms',
     'django.contrib.humanize',
+    'taggit',
 ]
 
 MIDDLEWARE = [
@@ -158,3 +159,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Set Django-Taggit to be case insensitive
+TAGGIT_CASE_INSENSITIVE = True
+

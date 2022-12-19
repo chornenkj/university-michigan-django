@@ -28,8 +28,12 @@ class AdListView(OwnerListView):
             # __icontains for case-insensitive search
 
             # Create query to filter by search value case-insensitive
+            # Add search in title field
             query = Q(title__icontains=strval)
+            # Add search in text field
             query.add(Q(text__icontains=strval), Q.OR)
+            # Add search in tags
+            query.add(Q(tags__name__in=[strval]), Q.OR)
             ad_list = Ad.objects.filter(query).select_related().order_by('-updated_at')[:10]
         else :
             # Get 10 most recent Ad objects if no search value
@@ -127,6 +131,7 @@ class AdUpdateView(LoginRequiredMixin, View):
 
         # If form is valid save form data to database
         form.save()
+        form.save_m2m()
         return redirect(self.success_url)
 
 
