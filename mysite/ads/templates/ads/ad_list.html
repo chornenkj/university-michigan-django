@@ -9,12 +9,36 @@ Ads CRUD and Users
 <p>
 
 <ul>
-    {% for item in object_list %}
+    {% for item in ad_list %}
     <li>
+        <!-- Row for each ad with name, and Edit and Delete buttons for owners -->
         <a href="{% url 'ads:ad_detail'  item.id %}">{{ item.title }}</a>
         {% if item.owner == user %}
         (<a href="{% url 'ads:ad_update' item.id %}">Edit</a> |
         <a href="{% url 'ads:ad_delete' item.id %}">Delete</a>)
+        {% endif %}
+
+        {% if user.is_authenticated %}
+        <!-- Two hrefs with two stacked icons each - one showing and one hidden -->
+        <a href="#" onclick=
+            "adPost('{% url 'ads:ad_unfavorite' item.id %}', {{ item.id }} ); return false;"
+            {% if item.id not in favorites %} style="display: none;" {% endif %}
+            id="favorite_star_{{item.id}}">
+        <span class="fa-stack" style="vertical-align: middle;">
+        <i class="fa fa-star fa-stack-1x" style="color: orange;"></i>
+        <i class="fa fa-star-o fa-stack-1x"></i>
+        </span>
+        </a>
+        <!-- the second href -->
+        <a href="#" onclick=
+             "adPost('{% url 'ads:ad_favorite' item.id %}', {{ item.id }} ); return false;"
+            {% if item.id in favorites %} style="display: none;" {% endif %}
+            id="unfavorite_star_{{item.id}}">
+        <span class="fa-stack" style="vertical-align: middle;">
+        <i class="fa fa-star fa-stack-1x" style="display: none; color: orange;"></i>
+        <i class="fa fa-star-o fa-stack-1x"></i>
+        </span>
+        </a>
         {% endif %}
     </li>
     {% empty %}
@@ -27,4 +51,17 @@ Ads CRUD and Users
 <p>
     <a href="{% url 'home' %}">Return to all apps</a>
 </p>
+
+<script>
+function adPost(url, ad_id) {
+    console.log('Requesting JSON');
+    $.post(url, {},  function(rowz){
+        console.log(url, 'finished');
+        $("#unfavorite_star_"+ad_id).toggle();
+        $("#favorite_star_"+ad_id).toggle();
+    }).fail(function(xhr) {
+        alert('Url failed with '+xhr.status+' '+url);
+    });
+}
+</script>
 {% endblock %}
