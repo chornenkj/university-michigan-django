@@ -22,6 +22,7 @@ Ads app let you create ads. <em>App functionality includes</em>:
 <li>You can also browse ads of other users, but you are not allowed to edit or delete them.</li>
 <li>You can add and update pictures for each ad.</li>
 <li>You can comment all ads and delete your comments.</li>
+<li>You can check ads as favorite or unfavorite them (<em>using AJAX</em>).</li>
 </ul>
 
 ## Generate UNESCO Database
