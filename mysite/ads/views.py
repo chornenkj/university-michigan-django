@@ -100,6 +100,7 @@ class AdCreateView(LoginRequiredMixin, View):
         pic.owner = self.request.user
         # And now save data to database
         pic.save()
+        form.save_m2m()
         return redirect(self.success_url)
 
 
